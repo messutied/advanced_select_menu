@@ -1,0 +1,23 @@
+.am-button {
+    background: #4683ea;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.am-button .am-button-list {
+    color: black;
+    padding: 5px;
+    margin: 0;
+
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.15);
+    border-radius: 5px;
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    margin-top: 7px;
+}
+
+.am-button .am-button-list li {
+    list-style-type: none;
+}
