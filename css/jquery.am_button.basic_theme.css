@@ -1,4 +1,4 @@
-.am-button {
+.am_button {
     background: #4683ea;
     color: white;
     border-radius: 5px;
@@ -6,18 +6,23 @@
     text-decoration: none;
 }
 
-.am-button .am-button-list {
+.am_popup {
     color: black;
     padding: 5px;
     margin: 0;
 
-    overflow: hidden;
     border: 1px solid rgba(0,0,0,0.15);
-    border-radius: 5px;
+    border-radius: 3px;
     box-shadow: 0 3px 12px rgba(0,0,0,0.25);
     margin-top: 7px;
 }
 
-.am-button .am-button-list li {
+.am_button_list li {
     list-style-type: none;
+    cursor: pointer;
+    padding: 3px;
+}
+.am_button_list li:hover {
+    background: #4683ea;
+    color: white;
 }

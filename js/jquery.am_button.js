@@ -1,5 +1,8 @@
 (function( $ ) {
   var settings = {};
+  var defaultSettings = {
+    showHeader: true
+  };
 
   var initialize = function($el) {
     var id = $el.attr("id");
@@ -9,13 +12,44 @@
       $.error("No list found for the advanced button "+id);
     }
 
-    var span = $("<span>").text( $el.text() );
-    $el.html(span).append(list);
-    $el.addClass("am-button");
+    $el.addClass("am_button");
 
+    // create popup
+    var popup = $("<div class='am_popup' style='display:none'>");
+    popup.append(list);
+    list.show();
+
+    // create button container
+    var bContainer = $("<div class='am_button_container'>");
+    bContainer.insertAfter($el);
+    bContainer.append($el, popup);
+
+    // add header
+    if (settings.showHeader) {
+      var hText = $("<span>").text("Select an option");
+      var closeButton = $("<a href='#'>").html("&times;");
+      var header = $("<div class='am_header'>").append(hText, closeButton);
+      list.before(header);
+      closeButton.click(function(evt) {
+        evt.preventDefault();
+        popup.hide();
+      });
+    }
+
+    // setup popup show on button click
     $el.click(function(evt) {
       evt.preventDefault();
-      list.toggle();
+      popup.toggle();
+    });
+
+    setUpMenuItemsEvents($el);
+  }
+
+  var setUpMenuItemsEvents = function($el) {
+    $el.find("li").click(function(evt) {
+      evt.stopPropagation();
+      evt.preventDefault();
+      $(this).toggleClass("selected");
     });
   }
 
@@ -24,8 +58,7 @@
       var self = this;
       var $this = $(this);
 
-      settings = $.extend({
-      }, options);
+      settings = $.extend(defaultSettings, options);
 
       $this.each(function () {
         var $element = $(this);
