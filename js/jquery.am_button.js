@@ -42,6 +42,11 @@
       popup.toggle();
     });
 
+    // close on click outside of bContainer
+    bContainer.click(function(evt) {
+      evt.stopPropagation();
+    });
+
     setUpMenuItemsEvents($el);
   }
 
@@ -63,6 +68,11 @@
       $this.each(function () {
         var $element = $(this);
         initialize($element);
+      });
+
+      // hide popup on click outside
+      $('html').click(function() {
+        $(".am_popup").hide();
       });
     }
   };
