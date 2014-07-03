@@ -1,3 +1,26 @@
+.am_button_container {
+    display: inline;
+}
+
+.am_button {
+    padding: 5px 10px;
+    text-decoration: none;
+}
+
+.am_popup {
+    position: absolute;
+    margin: 7px 0 0 0;
+    overflow: hidden;
+}
+
+.am_header {
+    padding: 6px 10px 10px 10px;
+}
+.am_header a {
+    text-decoration: none;
+    margin-left: 10px;
+}
+
 .am_button_list {
     display: none;
     padding: 0;
@@ -10,26 +33,4 @@
 }
 .am_button_list li:nth-last-child(1) {
     border: none;
-}
-
-.am_popup {
-    position: absolute;
-    margin: 7px 0 0 0;
-}
-
-.am_button_container {
-    display: inline;
-}
-
-.am_header {
-    padding: 6px 10px 10px 10px;
-}
-
-.am_header a {
-    text-decoration: none;
-    margin-left: 10px;
-}
-.am_button {
-    padding: 5px 10px;
-    text-decoration: none;
 }

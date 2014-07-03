@@ -1,7 +1,9 @@
 (function( $ ) {
   var settings = {};
   var defaultSettings = {
-    showHeader: true
+    showHeader: true,
+    multiselect: false,
+    hidePopupOnSelect: false
   };
 
   var initialize = function($el) {
@@ -36,6 +38,10 @@
       });
     }
 
+    list.find("li").click(function() {
+      onListItemClick.call(this, list);
+    });
+
     // setup popup show on button click
     $el.click(function(evt) {
       evt.preventDefault();
@@ -48,6 +54,18 @@
     });
 
     setUpMenuItemsEvents($el);
+  }
+
+  var onListItemClick = function(list) {
+    if (!settings.multiselect) list.find("li.selected").removeClass("selected");
+
+    $(this).toggleClass("selected");
+
+    if (!settings.multiselect && 
+        settings.hidePopupOnSelect && 
+        list.find("li.selected").size() > 0) {
+      list.parents(".am_popup").hide();
+    }
   }
 
   var setUpMenuItemsEvents = function($el) {

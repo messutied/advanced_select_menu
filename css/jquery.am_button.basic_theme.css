@@ -11,17 +11,22 @@
     color: black;
 }
 
-.am_button_list li {
-    border-bottom: 1px solid rgb(240, 240, 240);
-}
-.am_button_list li:hover {
-    background: #4683ea;
-    color: white;
-}
 .am_header {
     background: rgb(238, 238, 238);
 }
 .am_header a {
     font-weight: bold;
     color: rgb(180, 180, 180);
+}
+
+.am_button_list li {
+    border-bottom: 1px solid rgb(240, 240, 240);
+}
+.am_button_list li:hover {
+    background: #74A5F8;
+    color: white;
+}
+.am_button_list li.selected {
+    background: #4683ea;
+    color: white;
 }
