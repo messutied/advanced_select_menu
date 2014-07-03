@@ -6,6 +6,14 @@
     padding: 5px 10px;
     text-decoration: none;
 }
+.am_action_buttons_container button {
+    padding: 5px 8px;
+    text-decoration: none;
+    cursor: pointer;
+}
+.am_action_buttons_container {
+    padding: 5px 5px 3px 5px;
+}
 
 .am_popup {
     position: absolute;

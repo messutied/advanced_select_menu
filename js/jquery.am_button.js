@@ -3,7 +3,9 @@
   var defaultSettings = {
     showHeader: true,
     multiselect: false,
-    hidePopupOnSelect: false
+    hidePopupOnSelect: false,
+    showApplyButton: false,
+    showClearButton: false,
   };
 
   var initialize = function($el) {
@@ -18,8 +20,26 @@
 
     // create popup
     var popup = $("<div class='am_popup' style='display:none'>");
-    popup.append(list);
+
+    // list container
+    var listContainer = $("<div class='am_list_container'>");
+    listContainer.append(list);
     list.show();
+    popup.append(listContainer);
+
+    // foother buttons
+    if (settings.showApplyButton || settings.showClearButton) {
+      var fButtonsContainer = $("<div class='am_action_buttons_container'>");
+      if (settings.showApplyButton) {
+        var applyButton = $("<button>").text("Apply");
+        fButtonsContainer.append(applyButton);
+      }
+      if (settings.showClearButton) {
+        var clearButton = $("<button class='clear'>").text("Clear");
+        fButtonsContainer.append(clearButton);
+      }
+      listContainer.append(fButtonsContainer);
+    }
 
     // create button container
     var bContainer = $("<div class='am_button_container'>");
@@ -31,7 +51,7 @@
       var hText = $("<span>").text("Select an option");
       var closeButton = $("<a href='#'>").html("&times;");
       var header = $("<div class='am_header'>").append(hText, closeButton);
-      list.before(header);
+      listContainer.before(header);
       closeButton.click(function(evt) {
         evt.preventDefault();
         popup.hide();

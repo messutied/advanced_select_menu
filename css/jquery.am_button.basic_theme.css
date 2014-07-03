@@ -30,3 +30,16 @@
     background: #4683ea;
     color: white;
 }
+
+.am_action_buttons_container button {
+    background: #4683ea;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+.am_action_buttons_container button.clear {
+    background: rgb(184, 184, 184);;
+}
+.am_action_buttons_container {
+    border-top: 1px solid rgb(231, 231, 231);
+}
