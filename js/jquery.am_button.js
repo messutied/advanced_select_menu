@@ -37,6 +37,9 @@
       if (settings.showClearButton) {
         var clearButton = $("<button class='clear'>").text("Clear");
         fButtonsContainer.append(clearButton);
+        clearButton.click(function() {
+          clearSelection(list);
+        });
       }
       listContainer.append(fButtonsContainer);
     }
@@ -94,6 +97,10 @@
       evt.preventDefault();
       $(this).toggleClass("selected");
     });
+  }
+
+  var clearSelection = function(list) {
+    list.find("li.selected").removeClass("selected");
   }
 
   var methods = {
