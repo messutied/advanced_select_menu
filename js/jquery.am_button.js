@@ -1,6 +1,6 @@
 (function( $ ) {
-  var settings = {};
-  var defaultSettings = {
+  var options = {};
+  var defaultOptions = {
     showHeader: true,
     multiselect: false,
     hidePopupOnSelect: false,
@@ -12,18 +12,18 @@
     var amButton = $el.data("am_button");
 
     if (!(amButton instanceof AmButton)) {
-      amButton = new AmButton($el, settings);
+      amButton = new AmButton($el, options);
     }
 
     return amButton;
   }
 
   var methods = {
-    init: function(options) {
+    init: function(_options) {
       var self = this;
       var $this = $(this);
 
-      settings = $.extend(defaultSettings, options);
+      options = $.extend(defaultOptions, _options);
 
       $this.each(function () {
         setupAmButton( $(this) );
