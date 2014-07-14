@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Advanced Menu Button</title>
+    <title>Advanced Select Menu</title>
 
-    <link rel="stylesheet" href="css/jquery.am_button.css">
-    <link rel="stylesheet" href="css/jquery.am_button.basic_theme.css">
+    <link rel="stylesheet" href="css/jquery.a_select_menu.css">
+    <link rel="stylesheet" href="css/jquery.a_select_menu.basic_theme.css">
   </head>
   <body>
     <a href="#" id="tags_btn" data-title="Add/Remove tags">Tags</a>
-    <ul data-for="tags_btn" class="am_button_list">
+    <ul data-for="tags_btn" class="as_menu_list">
       <li>Tag 1</li>
       <li>Tag 2</li>
       <li>Tag 3</li>
@@ -16,10 +16,10 @@
     
     <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
     <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.am_button.js"></script>
+    <script src="js/jquery.a_select_menu.js"></script>
     <script type="text/javascript">
       $(function() {
-        $("#tags_btn").amButton({
+        $("#tags_btn").aSelectMenu({
           multiselect: true,
           showApplyButton: true,
           showClearButton: true

@@ -8,14 +8,14 @@
     showClearButton: false,
   };
 
-  var setupAmButton = function($el) {
-    var amButton = $el.data("am_button");
+  var setupASelectMenu = function($el) {
+    var asMenu = $el.data("as_menu");
 
-    if (!(amButton instanceof AmButton)) {
-      amButton = new AmButton($el, options);
+    if (!(asMenu instanceof ASelectMenu)) {
+      asMenu = new ASelectMenu($el, options);
     }
 
-    return amButton;
+    return asMenu;
   }
 
   var methods = {
@@ -26,17 +26,17 @@
       options = $.extend(defaultOptions, _options);
 
       $this.each(function () {
-        setupAmButton( $(this) );
+        setupASelectMenu( $(this) );
       });
 
       // hide popup on click outside
       $('html').click(function() {
-        $(".am_popup").hide();
+        $(".as_popup").hide();
       });
     }
   };
 
-  $.fn.amButton = function(method) {
+  $.fn.aSelectMenu = function(method) {
     // Method calling logic
     if ( methods[method] ) {
       return methods[ method ].apply(this, Array.prototype.slice.call( arguments, 1 ));
@@ -49,7 +49,7 @@
 })( jQuery );
 
 
-function AmButton(_$el, _options) {
+function ASelectMenu(_$el, _options) {
 
   // private instance variables
 
@@ -64,7 +64,7 @@ function AmButton(_$el, _options) {
     list = $("[data-for="+id+"]");
 
     if (list.length == 0) {
-      $.error("No list found for the advanced button "+id);
+      $.error("No list found for the advanced select menu "+id);
     }
 
     setupHtml();
@@ -102,7 +102,7 @@ function AmButton(_$el, _options) {
     if (!options.multiselect && 
         options.hidePopupOnSelect && 
         list.find("li.selected").size() > 0) {
-      list.parents(".am_popup").hide();
+      list.parents(".as_popup").hide();
     }
   }
 
@@ -111,20 +111,20 @@ function AmButton(_$el, _options) {
   }
 
   var setupHtml = function() {
-    $el.addClass("am_button");
+    $el.addClass("as_menu");
 
     // create popup
-    popup = $("<div class='am_popup' style='display:none'>");
+    popup = $("<div class='as_popup' style='display:none'>");
 
     // list container
-    listContainer = $("<div class='am_list_container'>");
+    listContainer = $("<div class='as_list_container'>");
     listContainer.append(list);
     list.show();
     popup.append(listContainer);
 
     // foother buttons
     if (options.showApplyButton || options.showClearButton) {
-      var fButtonsContainer = $("<div class='am_action_buttons_container'>");
+      var fButtonsContainer = $("<div class='as_action_buttons_container'>");
       if (options.showApplyButton) {
         var applyButton = $("<button>").text("Apply");
         fButtonsContainer.append(applyButton);
@@ -140,7 +140,7 @@ function AmButton(_$el, _options) {
     }
 
     // create button container
-    bContainer = $("<div class='am_button_container'>");
+    bContainer = $("<div class='as_menu_container'>");
     bContainer.insertAfter($el);
     bContainer.append($el, popup);
 
@@ -148,7 +148,7 @@ function AmButton(_$el, _options) {
     if (options.showHeader) {
       var hText = $("<span>").text("Select an option");
       var closeButton = $("<a href='#'>").html("&times;");
-      var header = $("<div class='am_header'>").append(hText, closeButton);
+      var header = $("<div class='as_header'>").append(hText, closeButton);
       listContainer.before(header);
       closeButton.click(function(evt) {
         evt.preventDefault();

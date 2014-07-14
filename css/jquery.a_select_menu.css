@@ -1,44 +1,44 @@
-.am_button_container {
+.as_menu_container {
     display: inline;
 }
 
-.am_button {
+.as_menu {
     padding: 5px 10px;
     text-decoration: none;
 }
-.am_action_buttons_container button {
+.as_action_buttons_container button {
     padding: 5px 8px;
     text-decoration: none;
     cursor: pointer;
 }
-.am_action_buttons_container {
+.as_action_buttons_container {
     padding: 5px 5px 3px 5px;
 }
 
-.am_popup {
+.as_popup {
     position: absolute;
     margin: 7px 0 0 0;
     overflow: hidden;
 }
 
-.am_header {
+.as_header {
     padding: 6px 10px 10px 10px;
 }
-.am_header a {
+.as_header a {
     text-decoration: none;
     margin-left: 10px;
 }
 
-.am_button_list {
+.as_menu_list {
     display: none;
     padding: 0;
     margin: 0;
 }
-.am_button_list li {
+.as_menu_list li {
     padding: 5px 7px;
     list-style-type: none;
     cursor: pointer;
 }
-.am_button_list li:nth-last-child(1) {
+.as_menu_list li:nth-last-child(1) {
     border: none;
 }
