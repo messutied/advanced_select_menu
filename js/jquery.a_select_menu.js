@@ -21,18 +21,10 @@
 
   var methods = {
     init: function(_options) {
-      var self = this;
-      var $this = $(this);
-
       options = $.extend(defaultOptions, _options);
 
-      $this.each(function () {
+      $(this).each(function () {
         setupASelectMenu( $(this) );
-      });
-
-      // hide popup on click outside
-      $('html').click(function() {
-        $(".as_popup").hide();
       });
     }
   };
@@ -58,6 +50,7 @@ function ASelectMenu(_$el, _options) {
   var $el = _$el;
   var options = _options;
   var debugging = options.debugging;
+  
 
   // private methods
 
@@ -74,6 +67,12 @@ function ASelectMenu(_$el, _options) {
   }
 
   var setupEvents = function() {
+    // hide popup on click outside
+    $('html').click(function() {
+      popup.hide();
+    });
+
+    // items select
     list.find("li").click(function() {
       onListItemClick.call(this, list);
     });
