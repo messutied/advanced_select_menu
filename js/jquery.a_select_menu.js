@@ -1,6 +1,7 @@
 (function( $ ) {
   var options = {};
   var defaultOptions = {
+    debugging: false,
     showHeader: true,
     multiselect: false,
     hidePopupOnSelect: false,
@@ -56,6 +57,7 @@ function ASelectMenu(_$el, _options) {
   var list, popup, listContainer, bContainer;
   var $el = _$el;
   var options = _options;
+  var debugging = options.debugging;
 
   // private methods
 
@@ -99,15 +101,49 @@ function ASelectMenu(_$el, _options) {
 
     $(this).toggleClass("selected");
 
+    // hide popup on single select
     if (!options.multiselect && 
         options.hidePopupOnSelect && 
         list.find("li.selected").size() > 0) {
       list.parents(".as_popup").hide();
     }
+
+    trigger( "select_item", {selected: getSelectedItems()} );
+  }
+
+  var trigger = function(event_name, obj) {
+    $el.trigger("am:"+event_name, obj);
+    dlog("- triggered \""+event_name+"\" with param: "+JSON.stringify(obj));
+
+    var event_method = options["on_"+event_name];
+
+    if (typeof event_method == "function") {
+      event_method.call($el, obj);
+    }
   }
 
   var clearSelection = function() {
     list.find("li.selected").removeClass("selected");
+    trigger("clear");
+  }
+
+  var apply = function() {
+    trigger( "apply", {selected: getSelectedItems()} );
+  }
+
+  var getSelectedItems = function() {
+    var selItems = [];
+
+    if (!options.multiselect) {
+      selItems = list.find("li.selected").data("value");
+    }
+    else {
+      list.find("li.selected").each(function() {
+        selItems.push($(this).data("value"));
+      });
+    }
+
+    return selItems;
   }
 
   var setupHtml = function() {
@@ -128,13 +164,12 @@ function ASelectMenu(_$el, _options) {
       if (options.showApplyButton) {
         var applyButton = $("<button>").text("Apply");
         fButtonsContainer.append(applyButton);
+        applyButton.click(apply);
       }
       if (options.showClearButton) {
         var clearButton = $("<button class='clear'>").text("Clear");
         fButtonsContainer.append(clearButton);
-        clearButton.click(function() {
-          clearSelection();
-        });
+        clearButton.click(clearSelection);
       }
       listContainer.append(fButtonsContainer);
     }
@@ -155,6 +190,10 @@ function ASelectMenu(_$el, _options) {
         popup.hide();
       });
     }
+  }
+
+  var dlog = function(mssg) {
+    if (debugging) console.log(mssg);
   }
 
   initialize();
