@@ -46,20 +46,20 @@ function ASelectMenu(_$el, _options) {
 
   // private instance variables
 
-  var list, popup, listContainer, bContainer;
+  var list, popup, listContainer, bContainer, tabs;
   var $el = _$el;
   var options = _options;
+  var eid = $el.attr("id");
   var debugging = options.debugging;
-  
+
 
   // private methods
 
   var initialize = function() {
-    var id = $el.attr("id");
-    list = $("[data-for="+id+"]");
+    list = $("[data-for="+eid+"]");
 
     if (list.length == 0) {
-      $.error("No list found for the advanced select menu "+id);
+      $.error("No list found for the advanced select menu "+eid);
     }
 
     setupHtml();
@@ -93,6 +93,15 @@ function ASelectMenu(_$el, _options) {
       evt.preventDefault();
       $(this).toggleClass("selected");
     });
+
+    // setup tabs
+    if (tabs) {
+      tabs.find("a").click(function(evt) {
+        evt.preventDefault();
+        var id = $(this).parent().data("tab-id");
+        selectTab(id);
+      });
+    }
   }
 
   var onListItemClick = function() {
@@ -153,9 +162,28 @@ function ASelectMenu(_$el, _options) {
 
     // list container
     listContainer = $("<div class='as_list_container'>");
-    listContainer.append(list);
-    list.show();
     popup.append(listContainer);
+    listContainer.append(list);
+
+    // setup tabs
+    if (list.size() > 1) {
+      tabs = $("<ul class='as_tabs'>");
+      list.each(function() {
+        var title = $(this).data("tab-title");
+        var id = $(this).data("tab-id");
+        var tab = $("<li>").append( $("<a href='#'>").text(title) ).attr("data-tab-id", id);
+        tabs.append(tab);
+      });
+
+      var selTab = tabs.find("li:first").addClass("selected").data("tab-id");
+      selectTab(selTab);
+
+      listContainer.before( $("<div class='as_tabs_container'>").append(tabs) );
+    }
+    else {
+      // no tabs
+      list.show();
+    }
 
     // foother buttons
     if (options.showApplyButton || options.showClearButton) {
@@ -183,12 +211,20 @@ function ASelectMenu(_$el, _options) {
       var hText = $("<span>").text("Select an option");
       var closeButton = $("<a href='#'>").html("&times;");
       var header = $("<div class='as_header'>").append(hText, closeButton);
-      listContainer.before(header);
+      popup.prepend(header);
       closeButton.click(function(evt) {
         evt.preventDefault();
         popup.hide();
       });
     }
+  }
+
+  var selectTab = function(tabId) {
+    tabs.find("li").removeClass("selected");
+    tabs.find("li[data-tab-id="+tabId+"]").addClass("selected");
+
+    list.hide();
+    listContainer.find("[data-tab-id="+tabId+"]").show();
   }
 
   var dlog = function(mssg) {
