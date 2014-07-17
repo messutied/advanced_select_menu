@@ -116,7 +116,7 @@ function ASelectMenu(_$el, _options) {
       list.parents(".as_popup").hide();
     }
 
-    trigger( "select_item", {selected: getSelectedItems()} );
+    trigger( "select_item", getSelectedItems() );
   }
 
   var trigger = function(event_name, obj) {
@@ -131,27 +131,44 @@ function ASelectMenu(_$el, _options) {
   }
 
   var clearSelection = function() {
-    list.find("li.selected").removeClass("selected");
+    getSelectedList().find("li.selected").removeClass("selected");
     trigger("clear");
   }
 
   var apply = function() {
-    trigger( "apply", {selected: getSelectedItems()} );
+    trigger( "apply", getSelectedItems() );
   }
 
   var getSelectedItems = function() {
     var selItems = [];
+    var sList = getSelectedList();
 
     if (!options.multiselect) {
-      selItems = list.find("li.selected").data("value");
+      selItems = sList.find("li.selected").data("value");
     }
     else {
-      list.find("li.selected").each(function() {
+      sList.find("li.selected").each(function() {
         selItems.push($(this).data("value"));
       });
     }
 
-    return selItems;
+    var obj = {selected: selItems};
+    if (tabs) {
+      obj.tab = sList.data("tab-id");
+    }
+
+    return obj;
+  }
+
+  var getSelectedTab = function() {
+    return tabs.find("li.selected").data("tab-id");
+  }
+
+  var getSelectedList = function() {
+    if (tabs)
+      return listContainer.find("ul.selected");
+    else
+      return list;
   }
 
   var setupHtml = function() {
@@ -223,8 +240,8 @@ function ASelectMenu(_$el, _options) {
     tabs.find("li").removeClass("selected");
     tabs.find("li[data-tab-id="+tabId+"]").addClass("selected");
 
-    list.hide();
-    listContainer.find("[data-tab-id="+tabId+"]").show();
+    list.removeClass("selected");
+    listContainer.find("[data-tab-id="+tabId+"]").addClass("selected");
   }
 
   var dlog = function(mssg) {
