@@ -177,6 +177,18 @@ function ASelectMenu(_$el, _options) {
     // create popup
     popup = $("<div class='as_popup' style='display:none'>");
 
+    // add header
+    if (options.showHeader) {
+      var hText = $("<span>").text("Select an option");
+      var closeButton = $("<a href='#'>").html("&times;");
+      var header = $("<div class='as_header'>").append(hText, closeButton);
+      popup.append(header);
+      closeButton.click(function(evt) {
+        evt.preventDefault();
+        popup.hide();
+      });
+    }
+
     // list container
     listContainer = $("<div class='as_list_container'>");
     popup.append(listContainer);
@@ -192,7 +204,7 @@ function ASelectMenu(_$el, _options) {
         tabs.append(tab);
       });
 
-      var selTab = tabs.find("li:first").addClass("selected").data("tab-id");
+      var selTab = tabs.find("li:first").data("tab-id");
       selectTab(selTab);
 
       listContainer.before( $("<div class='as_tabs_container'>").append(tabs) );
@@ -218,22 +230,10 @@ function ASelectMenu(_$el, _options) {
       listContainer.append(fButtonsContainer);
     }
 
-    // create button container
+    // create advanced select menu container
     bContainer = $("<div class='as_menu_container'>");
     bContainer.insertAfter($el);
     bContainer.append($el, popup);
-
-    // add header
-    if (options.showHeader) {
-      var hText = $("<span>").text("Select an option");
-      var closeButton = $("<a href='#'>").html("&times;");
-      var header = $("<div class='as_header'>").append(hText, closeButton);
-      popup.prepend(header);
-      closeButton.click(function(evt) {
-        evt.preventDefault();
-        popup.hide();
-      });
-    }
   }
 
   var selectTab = function(tabId) {
