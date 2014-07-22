@@ -105,6 +105,15 @@ function ASelectMenu(_$el, _options) {
         selectTab(id);
       });
     }
+
+    // setup search
+    if (options.searchBox) {
+      searchBox.on("keyup", function(evt) {
+        var text = $(this).val();
+        listContainer.find("li").hide();
+        listContainer.find("li:contains("+text+")").show();
+      });
+    }
   }
 
   var onListItemClick = function() {
@@ -147,10 +156,10 @@ function ASelectMenu(_$el, _options) {
     var sList = getSelectedList();
 
     if (!options.multiselect) {
-      selItems = sList.find("li.selected").data("value");
+      selItems = sList.find("li:visible.selected").data("value");
     }
     else {
-      sList.find("li.selected").each(function() {
+      sList.find("li:visible.selected").each(function() {
         selItems.push($(this).data("value"));
       });
     }
