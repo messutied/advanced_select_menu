@@ -13,14 +13,15 @@
 
 .as_header {
     background: rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(204, 204, 204);
 }
 .as_header a {
     font-weight: bold;
     color: rgb(180, 180, 180);
 }
 
-.as_tabs {
-    background: rgb(238, 238, 238);
+.as_tabs, .as_search_box_container {
+    background: rgb(247, 247, 247)
 }
 
 .as_menu_list li {

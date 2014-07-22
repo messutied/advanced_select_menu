@@ -46,7 +46,7 @@ function ASelectMenu(_$el, _options) {
 
   // private instance variables
 
-  var list, popup, listContainer, bContainer, tabs;
+  var list, popup, listContainer, bContainer, tabs, searchBox;
   var $el = _$el;
   var options = _options;
   var eid = $el.attr("id");
@@ -81,6 +81,9 @@ function ASelectMenu(_$el, _options) {
     $el.click(function(evt) {
       evt.preventDefault();
       popup.toggle();
+      if (options.searchBox) {
+        searchBox.focus();
+      }
     });
 
     // close on click outside of bContainer
@@ -187,6 +190,14 @@ function ASelectMenu(_$el, _options) {
         evt.preventDefault();
         popup.hide();
       });
+    }
+
+    // search box
+    if (options.searchBox) {
+      var searchContainer = $("<div class='as_search_box_container'>");
+      searchBox = $("<input type='text' placeholder='search...'>");
+      searchContainer.append(searchBox);
+      popup.append(searchContainer);
     }
 
     // list container
