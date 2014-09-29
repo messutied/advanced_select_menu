@@ -26,12 +26,15 @@
 }
 .as_header a {
     text-decoration: none;
-    margin-left: 10px;
+    float: right;
 }
 
 .as_search_box_container {
     text-align: center;
     padding: 7px 0;
+}
+.as_search_box_container input {
+    width: 90%;
 }
 
 .as_tabs {

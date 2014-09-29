@@ -1,4 +1,8 @@
 (function( $ ) {
+  $.expr[':'].containsIgnoreCase = function (n, i, m) {
+      return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
+  };
+
   var options = {};
   var defaultOptions = {
     debugging: false,
@@ -72,6 +76,34 @@ function ASelectMenu(_$el, _options) {
       popup.hide();
     });
 
+    // key based navigation
+    popup.on("keyup", function(evt) {
+      var sList = getSelectedList();
+      console.log(evt.keyCode);
+
+      if (evt.keyCode == 13) { // enter
+        sList.find(".nav_focus").toggleClass("selected");
+      }
+      else if (evt.keyCode == 40) { // down
+        sList.elSelect("next", ".nav_focus");
+      }
+      else if (evt.keyCode == 38) { // up
+        sList.elSelect("prev", ".nav_focus");
+      }
+      else if (evt.keyCode == 37) { // left
+        tabs.elSelect("prev", ".selected", selectTab);
+      }
+      else if (evt.keyCode == 39) { // right
+        tabs.elSelect("next", ".selected", selectTab);
+      }
+    });
+
+    // remove nav_focus on hovering items
+    list.find("li").hover(function() {
+      getSelectedList().find("li.nav_focus").removeClass("nav_focus");
+      $(this).addClass("nav_focus");
+    });
+
     // items select
     list.find("li").click(function() {
       onListItemClick.call(this, list);
@@ -84,6 +116,12 @@ function ASelectMenu(_$el, _options) {
       if (options.searchBox) {
         searchBox.focus();
       }
+
+      var selTab = tabs.find("li:first").data("tab-id");
+      selectTab(selTab);
+
+      list.find(".nav_focus").removeClass("nav_focus");
+      list.find("li:first").addClass("nav_focus");
     });
 
     // close on click outside of bContainer
@@ -111,7 +149,7 @@ function ASelectMenu(_$el, _options) {
       searchBox.on("keyup", function(evt) {
         var text = $(this).val();
         listContainer.find("li").hide();
-        listContainer.find("li:contains("+text+")").show();
+        listContainer.find("li:containsIgnoreCase("+text+")").show();
       });
     }
   }
@@ -143,7 +181,7 @@ function ASelectMenu(_$el, _options) {
   }
 
   var clearSelection = function() {
-    getSelectedList().find("li.selected").removeClass("selected");
+    getSelectedList().find("li").removeClass("selected nav_focus");
     trigger("clear");
   }
 
