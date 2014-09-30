@@ -48,6 +48,10 @@ table {
 Theme Styles
 *******************************************************************************/
 
+.a-center {
+  text-align: center;
+}
+
 body {
   box-sizing: border-box;
   color:#373737;
