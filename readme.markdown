@@ -1,6 +1,8 @@
 ### Description
 
-This jQuery plugin attempts to emulate (and improve) the functionality of the select menu used in Github.com, the one that can be seen when switching branches for example, also seen when filtering issues.
+This jQuery plugin attempts to emulate (and improve) the functionality of the select menu used in Github.com, the one that can be seen when switching branches for example, also seen when filtering issues:
+
+![Github.com Select Menu](http://messuti-edd.github.io/advanced_select_menu/images/github_menu_select.png)
 
 
 ### Features:
