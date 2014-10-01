@@ -6,7 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="Advanced Select Menu : Advanced Menu selector that emulates the Github menu selects.">
 
+    <script src="javascripts/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/hl/xcode.css">
 
     <title>Advanced Select Menu</title>
   </head>
@@ -52,6 +56,41 @@
         <li>[ ] Plain links items</li>
         <li>[ ] HTML items</li>
         </ul>
+
+        <h3><a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage:</h3>
+
+<pre><code class="javascript">$("#tags_btn").aSelectMenu({
+  ...options...
+});</code></pre>
+
+<br>
+
+<pre><code class="html">&lt;a href=&quot;#&quot; id=&quot;tags_btn&quot; data-title=&quot;Add/Remove tags&quot;&gt;Tags&lt;/a&gt;
+    
+&lt;ul data-for=&quot;tags_btn&quot; class=&quot;as_menu_list&quot; data-tab-title=&quot;Tab 1&quot; data-tab-id=&quot;tab_1&quot;&gt;
+  &lt;li data-value=&quot;1&quot;&gt;Item 1&lt;/li&gt;
+  &lt;li data-value=&quot;2&quot;&gt;Item 2&lt;/li&gt;
+  &lt;li data-value=&quot;3&quot;&gt;Item 3&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ul data-for=&quot;tags_btn&quot; class=&quot;as_menu_list&quot; data-tab-title=&quot;Tab 2&quot; data-tab-id=&quot;tab_2&quot;&gt;
+  &lt;li data-value=&quot;1&quot;&gt;Item 4&lt;/li&gt;
+  &lt;li data-value=&quot;2&quot;&gt;Item 5&lt;/li&gt;
+  &lt;li data-value=&quot;3&quot;&gt;Item 6&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+<br>
+
+<h4><a name="d-options" class="anchor" href="#d-options"><span class="octicon octicon-link"></span></a>Default Options:</h4>
+
+<pre><code class="javascript">var defaultOptions = {
+  debugging: false,
+  showHeader: true,
+  multiselect: false,
+  hidePopupOnSelect: false,
+  showApplyButton: false,
+  showClearButton: false,
+};</code></pre>
+
       </section>
     </div>
 
@@ -59,7 +98,6 @@
     <div id="footer_wrap" class="outer">
       <footer class="inner">
         <p class="copyright">Advanced Select Menu maintained by <a href="https://github.com/messuti-edd">messuti-edd</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
       </footer>
     </div>
 
