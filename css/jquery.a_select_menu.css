@@ -4,6 +4,8 @@
 
 .as_menu {
     padding: 5px 10px;
+}
+.as_menu, .as_menu:hover, .as_menu:focus {
     text-decoration: none;
 }
 .as_action_buttons_container button {
