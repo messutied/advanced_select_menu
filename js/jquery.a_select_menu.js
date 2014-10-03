@@ -1,3 +1,9 @@
+////////////////////////////////////////////////////////////////////////////////
+//
+//     $.aSelectMenu 
+//
+////////////////////////////////////////////////////////////////////////////////
+
 (function( $ ) {
   $.expr[':'].containsIgnoreCase = function (n, i, m) {
       return jQuery(n).text().toUpperCase().indexOf(m[3].toUpperCase()) >= 0;
@@ -45,6 +51,13 @@
   };
 })( jQuery );
 
+
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//     class ASelectMenu
+//
+////////////////////////////////////////////////////////////////////////////////
 
 function ASelectMenu(_$el, _options) {
 
@@ -308,3 +321,50 @@ function ASelectMenu(_$el, _options) {
 
   initialize();
 }
+
+////////////////////////////////////////////////////////////////////////////////
+//
+//     $.elSelect
+//
+////////////////////////////////////////////////////////////////////////////////
+
+(function( $ ) {
+  var select = function(_class, callback, option) {
+    var class_plain = _class.replace(".", "");
+    var list = $(this);
+    var sel = list.find(_class);
+    if (sel.size() < 1) list.find(":first").addClass(class_plain);
+    var next = option == "next" ? sel.next() : sel.prev();
+
+    if (next.size() > 0) {
+      if (callback != undefined) {
+        callback.call(this, next.data("tab-id"));
+      }
+      else {
+        sel.removeClass(class_plain);
+        next.addClass(class_plain);
+      }
+    }
+  }
+  
+  var methods = {
+    next: function(_class, callback) {
+      select.call(this, _class, callback, "next");
+    },
+    
+    prev: function(_class, callback) {
+      select.call(this, _class, callback, "prev");
+    }
+  };
+ 
+  $.fn.elSelect = function(method) {
+    // Method calling logic
+    if ( methods[method] ) {
+      return methods[ method ].apply(this, Array.prototype.slice.call( arguments, 1 ));
+    } else if ( typeof method === 'object' || ! method ) {
+      return methods.init.apply( this, arguments );
+    } else {
+      $.error( 'Method ' +  method + ' does not exist on jquery.zenti.basicPluginName' );
+    }    
+  };
+})( jQuery );
