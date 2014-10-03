@@ -1,5 +1,7 @@
 .as_menu_container {
     display: inline;
+    text-align: left;
+    position: relative;
 }
 
 .as_menu {
