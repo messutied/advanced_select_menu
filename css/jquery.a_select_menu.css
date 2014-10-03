@@ -19,6 +19,7 @@
     position: absolute;
     margin: 7px 0 0 0;
     overflow: hidden;
+    z-index: 10;
 }
 
 .as_header {

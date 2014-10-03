@@ -26,6 +26,7 @@
 
 .as_menu_list li {
     border-bottom: 1px solid rgb(240, 240, 240);
+    background: white;
 }
 .as_menu_list li.nav_focus {
     background: #74A5F8;
@@ -47,4 +48,5 @@
 }
 .as_action_buttons_container {
     border-top: 1px solid rgb(231, 231, 231);
+    background: white;
 }
