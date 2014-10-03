@@ -5,12 +5,18 @@
     <meta charset='utf-8'>
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <meta name="description" content="Advanced Select Menu : Advanced Menu selector that emulates the Github menu selects.">
+    
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://rawgithub.com/messuti-edd/advanced_select_menu/master/js/jquery.a_select_menu.js"></script>
 
     <script src="javascripts/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
 
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/hl/xcode.css">
+
+    <link rel="stylesheet" href="http://rawgithub.com/messuti-edd/advanced_select_menu/master/css/jquery.a_select_menu.css">
+    <link rel="stylesheet" href="http://rawgithub.com/messuti-edd/advanced_select_menu/master/css/jquery.a_select_menu.basic_theme.css">
 
     <title>Advanced Select Menu</title>
   </head>
@@ -40,6 +46,24 @@
         <p>This jQuery plugin attempts to emulate (and improve) the functionality of the select menu used in Github.com, the one that can be seen when switching branches for example, also seen when filtering issues:</p>
 
         <p class="a-center"><img src="images/github_menu_select.png" alt="Github Menu Select"></p>
+
+        <h3><a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example:</h3>
+
+        <br>
+
+        <a href="#" id="tags_btn" data-title="Add/Remove tags">Try it yourself</a>
+    
+        <ul data-for="tags_btn" class="as_menu_list" data-tab-title="Tab 1" data-tab-id="tab_1">
+          <li data-value="1">Item 1</li>
+          <li data-value="2">Item 2</li>
+          <li data-value="3">Item 3</li>
+        </ul>
+        
+        <ul data-for="tags_btn" class="as_menu_list" data-tab-title="Tab 2" data-tab-id="tab_2">
+          <li data-value="1">Item 4</li>
+          <li data-value="2">Item 5</li>
+          <li data-value="3">Item 6</li>
+        </ul>
         
         <br><br>
   
@@ -102,6 +126,17 @@
     </div>
 
     
-
+  
+    <script type="text/javascript">
+      $(function() {
+        $("#tags_btn").aSelectMenu({
+          debugging: true,
+          multiselect: true,
+          showApplyButton: true,
+          showClearButton: true,
+          searchBox: true
+        });
+      });
+    </script>
   </body>
 </html>
