@@ -11,7 +11,8 @@
     text-decoration: none;
 }
 .as_action_buttons_container button {
-    padding: 5px 8px;
+    padding: .3em .7em;
+    border-radius: .35em;
     text-decoration: none;
     cursor: pointer;
     margin-right: 5px;
@@ -41,7 +42,7 @@
     padding: 10px 0;
 }
 .as_search_box_container input {
-    width: 85%;
+    width: 80%;
     padding: .3em .5em;
     border-radius: 3px;
     border: 1px solid rgb(204, 204, 204);
