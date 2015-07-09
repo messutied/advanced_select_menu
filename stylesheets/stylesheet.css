@@ -48,8 +48,10 @@ table {
 Theme Styles
 *******************************************************************************/
 
-.a-center {
-  text-align: center;
+.a-select-center .as_menu_container {
+  margin: 0 auto;
+  width: 120px;
+  display: block;
 }
 
 body {
@@ -57,7 +59,7 @@ body {
   color:#373737;
   background: #212121;
   font-size: 16px;
-  font-family: 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
+  font-family: Helvetica, Arial, sans-serif;
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
 }
@@ -167,7 +169,7 @@ pre, code {
   background-color: #fff;
 
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal, monospace;
-  font-size: 12px;
+  font-size: 10px;
 
   border-radius: 2px;
   -moz-border-radius: 2px;

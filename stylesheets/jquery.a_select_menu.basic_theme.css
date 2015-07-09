@@ -1,0 +1,57 @@
+.as_tabs, .as_list_container {
+    font-size: .9em;
+}
+
+.as_menu {
+    background: #4683ea;
+    color: white;
+    border-radius: 5px;
+}
+
+.as_popup {
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.15);
+    box-shadow: 0 3px 12px rgba(0,0,0,0.25);
+    color: black;
+    font-size: 12px;
+}
+
+.as_header {
+    background: rgb(238, 238, 238);
+    border-bottom: 1px solid rgb(204, 204, 204);
+}
+.as_header a {
+    font-weight: bold;
+    color: rgb(180, 180, 180);
+}
+
+.as_tabs, .as_search_box_container {
+    background: rgb(247, 247, 247)
+}
+
+.as_menu_list li {
+    border-bottom: 1px solid rgb(240, 240, 240);
+    background: white;
+}
+.as_menu_list li.nav_focus {
+    background: #74A5F8;
+    color: white;
+}
+.as_menu_list li.selected {
+    background: #4683ea;
+    color: white;
+}
+
+.as_action_buttons_container button {
+    background: #4683ea;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+.as_action_buttons_container button.clear {
+    background: rgb(184, 184, 184);;
+}
+.as_action_buttons_container {
+    border-top: 1px solid rgb(231, 231, 231);
+    background: white;
+}
