@@ -11,12 +11,15 @@
     text-decoration: none;
 }
 .as_action_buttons_container button {
-    padding: 5px 8px;
+    font-size: inherit;
+    padding: .3em .7em;
+    border-radius: .35em;
     text-decoration: none;
     cursor: pointer;
+    margin-right: 5px;
 }
 .as_action_buttons_container {
-    padding: 5px 5px 3px 5px;
+    padding: 5px;
 }
 
 .as_popup {
@@ -37,28 +40,37 @@
 
 .as_search_box_container {
     text-align: center;
-    padding: 7px 0;
+    padding: 10px 0;
 }
 .as_search_box_container input {
-    width: 90%;
+    font-size: inherit;
+    width: 80%;
+    padding: .3em .5em;
+    border-radius: 3px;
+    border: 1px solid rgb(204, 204, 204);
 }
 
+.as_tabs_container {
+    border-bottom: rgb(191, 191, 191) 1px solid
+}
 .as_tabs {
     margin: 0;
-    padding: 0 5px;
+    padding: 2px 5px;
+    line-height: initial;
 }
 .as_tabs li {
     display: inline;
     margin: 2px;
     font-weight: bold;
-    padding: 2px 3px 0 3px;
+    padding: 2px 4px;
 }
 .as_tabs li.selected {
     border-radius: 5px 5px 0 0;
-    border: rgb(218, 218, 218) 1px solid;
-    border-bottom: 0;
+    border: rgb(191, 191, 191) 1px solid;
+    border-bottom: 1px solid white;
     margin: 1px;
     background: white;
+    padding: 2px 5px;
 }
 .as_tabs li a {
     text-decoration: none;
@@ -74,7 +86,8 @@
     display: block;
 }
 .as_menu_list li {
-    padding: 5px 7px;
+    line-height: 1em;
+    padding: .6em 7px;
     list-style-type: none;
     cursor: pointer;
 }

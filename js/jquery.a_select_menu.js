@@ -90,7 +90,7 @@ function ASelectMenu(_$el, _options) {
     });
 
     // key based navigation
-    popup.on("keyup", function(evt) {
+    popup.on("keydown", function(evt) {
       var sList = getSelectedList();
       console.log(evt.keyCode);
 
@@ -98,9 +98,11 @@ function ASelectMenu(_$el, _options) {
         sList.find(".nav_focus").toggleClass("selected");
       }
       else if (evt.keyCode == 40) { // down
+        evt.preventDefault();
         sList.elSelect("next", ".nav_focus");
       }
       else if (evt.keyCode == 38) { // up
+        evt.preventDefault();
         sList.elSelect("prev", ".nav_focus");
       }
       else if (evt.keyCode == 37) { // left
@@ -134,7 +136,7 @@ function ASelectMenu(_$el, _options) {
       selectTab(selTab);
 
       list.find(".nav_focus").removeClass("nav_focus");
-      list.find("li:first").addClass("nav_focus");
+      // list.find("li:first").addClass("nav_focus");
     });
 
     // close on click outside of bContainer
