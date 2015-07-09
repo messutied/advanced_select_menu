@@ -11,6 +11,7 @@
     text-decoration: none;
 }
 .as_action_buttons_container button {
+    font-size: inherit;
     padding: .3em .7em;
     border-radius: .35em;
     text-decoration: none;
@@ -42,6 +43,7 @@
     padding: 10px 0;
 }
 .as_search_box_container input {
+    font-size: inherit;
     width: 80%;
     padding: .3em .5em;
     border-radius: 3px;
@@ -84,7 +86,8 @@
     display: block;
 }
 .as_menu_list li {
-    padding: 3px 7px;
+    line-height: 1em;
+    padding: .6em 7px;
     list-style-type: none;
     cursor: pointer;
 }
